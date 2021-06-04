@@ -1,4 +1,6 @@
-![teste](logoEngDados.png)
+<p align="center">
+  <img width="509" height="384" src="logoEngDados.png">
+</p>
 
 ## Módulos 1 e 2
 
