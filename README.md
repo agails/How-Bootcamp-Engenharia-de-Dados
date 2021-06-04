@@ -41,7 +41,6 @@ Nestes módulos vamos estudar ferramentas para desenvolvimento de software que n
 * Módulo 10: **CI / CD**
 * Módulo 11: **Ingestão de Dados**
 
-<br>
 ## Módulos 12 a 20
 
 ### Data Lake na AWS
