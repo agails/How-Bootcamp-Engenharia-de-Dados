@@ -1,71 +1,74 @@
+## Exercício 002
+Objetivos:
+ - Criar um banco de dados com docker 
+ - Conhecer os comandos: Select + Where + Group by
+ - Conhecer CTEs + Window functions
+ - Deduplicar dados
+ - Criar, atualizar e deletar tabelas e views 
+ - Acessar um banco de dados com Python 
+ - Conectar-se a uma ferramenta de BI
+
+### Primeira etapa
+
+Usando Docker vamos montar um HTML-SERVER simples com uma página de "Hello world", para isso vamos usar os arquivos Dockerfile e index.html.
+
+Com nossos arquivos preparados podemos subir nosso servidor, primeiro precisamos montar a imagem dando um "build" e depois iniciar o container com um "run"
+
+`docker build -t httpd .`
+
+Onde:
+
+ - **-t** é para nomear nossa imagem, caso contrário o docker dará um nome qualquer 
+ - **web_apache** é o nome que escolhemos
+ - **"."** é o local onde esta nosso Dockerfile (nesse caso na mesma pasta)
+
+Agora vamos iniciar nosso containner com
+
+`docker run --name my_apache -d -p 80:80 httpd`
+
+Onde:
+ - **--name my_apache** é o nome do nosso containner
+ - **-d** é o detach ou seja, executa sem travar o terminal
+ - **-p 80:80** é o mapeamento de portas, aqui ele esta encaminhando a porta 80 do container na porta 80 da nossa maquina, não necessáriamente precisa ser o mesmo numero podemos usar um 80:4242
+ - **web_apache** é o nome da nossa imagem
+
+Com tudo pronto podemos testar o nosso servidor abrindo o navegador e indo em: <http://localhost:80> onde veremos o seguinte:
+
 <p align="center">
-  <img width="509" height="384" src="logoEngDados.png">
+  <img width="364" height="170" src="img/docker.png">
 </p>
 
-## Módulos 1 e 2
+### Segunda etapa
 
-### Engenharia de dados
+Agora vamos montar um servidor postgress simples para um banco de dados, para saber qual imagem usar podemos consultar o [DockerHub](https://hub.docker.com)
 
-O que é um engenheiro de dados? Como criar uma caixa de ferramentas para ingestão e processamento de dados para nos atender no dia a dia independente da nossa profissão. Overview da profissão de engenharia de dados e diferenças para ciência de dados e business intelligence.
+Para subir uma imagem postgress precisamos de um pouco mais que um Dockerfile, sendo assim vamos usar um arquivo .yml e montar um aquivos para o docker-compose
 
-* Módulo 1: **Fundamentos de Engenharia de Dados**
-* Módulo 2: **Fundamentos de Ingestão de Dados**
+A diferença entre o Dockerfile e Docker compose é que no Dockerfile você cria uma imagem que os containers irão usar como base para serem iniciados. No Docker compose você poderá criar uma stack de containers a partir de uma imagem base.
 
-## Módulos 3 a 6
+Para o nosso exercício criamos um arquivo [docker-compose.yml](https://github.com/agails/How-Bootcamp-Engenharia-de-Dados/blob/master/Module%202/docker-compose.yml)
 
-### Fundamentos de ingestão de dados
+Com o docker-compose.yml criado iniciamos o stack de containers com o comando:
+`docker-compose up db`
 
-Os pipelines de engenharia de dados sempre começam com processos de ingestão. Nestes módulos estudaremos os fundamentos começando com processos para ingestão de dados de APIs e também com crawlers. Veremos algumas boas práticas tais como: retentativas, checkpointing e logs. Neste módulo faremos também uma revisão de conceitos python e de SQL.
+Agora utilizando uma IDE como por exemplo o [DBeaver](https://dbeaver.io/download/) vamos configurar a conexão conforme o print abaixo:
 
-* Módulo 3: **SQL**
-* Módulo 4: **Capturando dados de uma API**
-* Módulo 5: **Capturando dados com crawlers**
-* Módulo 6: **Testes e Jenkins**
+<p align="center">
+  <img width="914" height="533" src="img/dbeaver1.png">
+</p>
 
-## Módulos 7 a 9
+E clicando no botão **Test Connection...** testar a conexão
 
-### Testes e Ambientes de Trabalho
+<p align="center">
+  <img width="427" height="245" src="img/dbeaver2.png">
+</p>
 
-Aqui vamos construir alguns ambientes de trabalho, seja localmente ou em uma pequena estrutura com ferramentas como Jenkins e Docker para que possamos entender e aplicar os conceitos que vimos até aqui. Além disso, iniciamos nossa abordagem em um ambiente AWS com a criação de conta na Amazon e o deploy de uma função lambda.
+### Terceira etapa
 
-* Módulo 7: **Introdução à AWS**
-* Módulo 8: **AWS Lambda**
-* Módulo 9: **Git/Github**
+Agora vamos criar uma tabela e popular com os dados obtidos no kaggle em [Billboard "The Hot 100" Songs](https://www.kaggle.com/dhruvildave/billboard-the-hot-100-songs)
 
-## Módulos 10 e 11
+Primeiro criamos uma tabela com os campos necessários usando o scritp [CREATE TABLE Billboard1.sql](https://github.com/agails/How-Bootcamp-Engenharia-de-Dados/blob/master/Module%202/sql/CREATE%20TABLE%20Billboard1.sql)
 
-### CI/CD Developer tools
+Então carregamos o CSV baixado do kaggle pelo Dbeaver, para saber como realizar a importação de um **.CSV** pelo DBeaver indico a [Documentação Oficial](https://dbeaver.com/docs/wiki/Data-transfer/)
 
-Nestes módulos vamos estudar ferramentas para desenvolvimento de software que nos ajudam a gerenciar versões de código e a automatizar testes e deploys. Vamos entender o git flow e aprender boas práticas para desenvolvimento de código em equipes. Também estudaremos integração contínua com o GitHub Actions, executaremos nossos testes de forma automatizada e também faremos o deploy de recursos automaticamente.
-
-* Módulo 10: **CI / CD**
-* Módulo 11: **Ingestão de Dados**
-
-## Módulos 12 a 20
-
-### Data Lake na AWS
-
-Veremos conceitos e boas práticas de data lakes e então criaremos o nosso lake na AWS utilizando ferramentas como S3, Glue, Athena e Redshift Spectrum. Vamos também estudar processamento de dados utilizando Spark e aprenderemos a orquestrar nossas pipelines de dados utilizando Apache Airflow.
-Os módulos que fazem parte desse bloco:
-
-* Módulo 12: **Data Lakes**
-* Módulo 13: **AWS Glue + AWS Athena**
-* Módulo 14: **Mensageria**
-* Módulo 15: **Redshift e Spectrum**
-* Módulo 16: **Spark no Databricks**
-* Módulo 17: **Spark Streaming no Databricks**
-* Módulo 18: **Airflow**
-* Módulo 19: **Terraform e Cloudformation**
-* Módulo 20: **Data Engineering Portfolio**
-
-## Módulo 21
-
-### Cloudformation e Terraform
-
-Finalmente aprenderemos duas ferramentas para gerenciamento de Infraestrutura como Código que são essenciais para a criação de projetos de engenharia de dados escaláveis e fáceis de manter. Veremos como criar recursos na AWS através de código utilizando Cloudformation e Terraform
-
-## Módulo 22
-
-### Live sobre carreira
-
-Fechando esse curso com chave de ouro, uma live com convidados especiais contando sobre sua carreira e dando dicas de desenvolvimento de portfólio, como se candidatar e atuar em entrevistas, projetos e oportunidades no dia a dia.
+Agora podemos consultar nossos dados usando alguns SELECTs simples como os encontrados em [SELECT INTO.sql](https://github.com/agails/How-Bootcamp-Engenharia-de-Dados/blob/master/Module%202/sql/SELECT%20INTO.sql)
