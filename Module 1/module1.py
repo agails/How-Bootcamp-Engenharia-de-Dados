@@ -1,17 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-# Aula 1 do Bootcamp Engenharia de Dados da How Bootcamps
-
-## Projeto Dados da LotoFácil
-
-### Objetivos da atividade
-- Ler um arquivo de dados para um dataframe
-- Tratar a informação recebida
-- Selecionar os dados necessários
-- Extrair informações dos dados
-- Automatizar o processo
-
-#### Exercicio 1
+# Exercicio 1
 
 A proposta do exercício é coletar os dados dos sorteios da Lotofácil disponibilizados pela CEF e responder as seguintes perguntas:
 - Qual o número mais sorteado e o menos sorteado?
