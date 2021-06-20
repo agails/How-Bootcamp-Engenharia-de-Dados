@@ -13,7 +13,8 @@ services:
             - "./db:/var/lib/postgresql/data/"
 
     bi:
-        image: metabase/metabase
+        #image: metabase/metabase #maquinas x86
+        image: kontinuity/metabase-arm64v8-with-drivers:latest #Arm e M1
         ports: 
             - "3000:3000"
         links: 
