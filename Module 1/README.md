@@ -1,9 +1,19 @@
-## Exercício 001
+# Módulo 1 do Bootcamp Engenharia de Dados da How Bootcamps
+
+## Projeto Dados da LotoFácil
+
 A rede oficial de apostas na loteria é gerenciada pela Caixa Econômica Federal e a mesma disponibiliza todos os dados dos sorteios para consulta pública em seu site
 
 [Site da Caixa - LotoFácil](http://loterias.caixa.gov.br/wps/portal/loterias/landing/lotofacil "Site da Caixa - LotoFácil").
 
-A proposta do exercício é coletar esses dados e levantar as informações da LotoFácil
+### Objetivos da atividade
+ - Ler um arquivo de dados para um dataframe
+ - Tratar a informação recebida
+ - Selecionar os dados necessários
+ - Extrair informações dos dados
+ - Automatizar o processo
+
+#### A proposta do exercício é levantar as seguintes informações da LotoFácil:
  - Qual o número mais sorteado e o menos sorteado?
  - Qual a média de números Pares(p) Ímpares(I) e Primos(R) saem por sorteio?
 
