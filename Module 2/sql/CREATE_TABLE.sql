@@ -1,4 +1,4 @@
-CREATE TABLE public."Billboard1" (
+CREATE TABLE public."Billboard" (
     "date" date NULL,
     "rank" int4 NULL,
     song varchar(300) NULL,
