@@ -24,4 +24,4 @@ O objetivo do módulo é introduzir os conceitos de Bancos de dados e linguagem 
   - Utilizando as bibliotecas SQLAlchemy e XPTO do Python realizar a consulta dos dados no Banco
 
  #### Quarta etapa [Metabase](https://github.com/agails/How-Bootcamp-Engenharia-de-Dados/tree/master/Module%202/metabase)
-  - Utilizando as bibliotecas SQLAlchemy e XPTO do Python realizar a consulta dos dados no Banco
+  - Utilizando Docker subir um container com [Metabase](https://www.metabase.com) BI
