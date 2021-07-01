@@ -5,3 +5,6 @@
 /Module 2/docker/db
 /Module 2/.DS_Store
 /Module 2/metabase/db/*
+Module 3/.venv/*
+Module 3/main 03.py
+Module 3/capturaHTML.py
